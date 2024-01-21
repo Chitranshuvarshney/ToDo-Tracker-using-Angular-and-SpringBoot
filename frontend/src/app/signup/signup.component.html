@@ -1,0 +1,105 @@
+<div class="signup-image">
+  <img
+    style="width: 600px"
+    src="../../assets/signup-img.png"
+    alt="signup-image"
+  />
+</div>
+<mat-card class="card">
+  <img class="logo" src="../../assets/signup.png" alt="signup-logo" />
+  <mat-card-content class="content">Join Us Today !</mat-card-content>
+  <form (ngSubmit)="OnSubmit(signupForm)" #signupForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        name="email"
+        type="text"
+        pattern="[a-zA-Z0-9]+.[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}"
+        placeholder="Enter Email"
+        required
+        matInput
+        #email="ngModel"
+        [(ngModel)]="credentials.email"
+      />
+      <mat-error *ngIf="email.errors?.['required']"
+        >Email id is required</mat-error
+      >
+      <mat-error *ngIf="email.errors?.['pattern']"
+        >Enter valid email id example : abc@gmail.com</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input
+        name="username"
+        type="text"
+        placeholder="Enter Username"
+        pattern="^[a-zA-Z\s]*$"
+        required
+        matInput
+        #username="ngModel"
+        [(ngModel)]="credentials.username"
+      />
+      <mat-error *ngIf="username.errors?.['required']"
+        >Username is required</mat-error
+      >
+      <mat-error *ngIf="username.errors?.['pattern']"
+        >Username containing only alphabets
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        name="password"
+        type="password"
+        placeholder="Enter Password"
+        required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        #password="ngModel"
+        [(ngModel)]="credentials.password"
+      />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="password?.errors?.['required']"
+        >Password is required</mat-error
+      >
+      <mat-error *ngIf="password.errors?.['pattern']"
+        >Must contain at least one number, one uppercase and lowercase letter,
+        one special character from the set '@$!%*?&' and Minimum length of 8
+        characters required</mat-error
+      >
+    </mat-form-field>
+    <br /><br /><br />
+
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="signupForm.invalid"
+    >
+      Sign Up
+    </button>
+    <button
+      type="reset"
+      style="margin-left: 20px"
+      mat-raised-button
+      color="warn"
+    >
+      Reset
+    </button>
+
+    <br />
+    <br />
+    <p>Have an account already? <a routerLink="/login">Log in</a></p>
+  </form>
+</mat-card>

@@ -1,0 +1,29 @@
+.content {
+  text-align: center;
+  font-size: large;
+}
+
+.card {
+  width: 30%;
+  margin: 50px;
+  box-shadow: 5px 5px 15px gray;
+}
+
+.logo {
+  width: 100px;
+  margin: 20px auto;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+form {
+  text-align: center;
+  margin: 30px;
+}
+
+.signup-image {
+  float: left;
+  margin: 0 120px;
+}

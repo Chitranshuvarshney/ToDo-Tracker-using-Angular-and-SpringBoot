@@ -1,0 +1,25 @@
+.content {
+  text-align: center;
+  font-size: 50px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin: 30px auto;
+}
+
+.card {
+  width: 30%;
+  margin: 50px;
+  box-shadow: 5px 5px 15px gray;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+form {
+  margin: 30px;
+}
+
+.contact-image {
+  float: left;
+  margin: 0 160px;
+}

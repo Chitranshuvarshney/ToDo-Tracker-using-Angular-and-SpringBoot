@@ -1,0 +1,32 @@
+.about-image {
+  text-align: center;
+}
+
+.content {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.text {
+  width: 85%;
+  margin: auto;
+}
+
+.team {
+  border: 3px solid black;
+  width: 85%;
+  height: 600px;
+  border-radius: 25px;
+  margin: auto;
+}
+
+.member {
+  text-align: center;
+}
+
+.photo {
+  width: 260px;
+  border-radius: 200px;
+  margin-bottom: 10px;
+}

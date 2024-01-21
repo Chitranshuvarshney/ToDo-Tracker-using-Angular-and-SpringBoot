@@ -1,0 +1,16 @@
+#message {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 50px;
+  align-items: center;
+}
+
+button {
+  margin-top: 10px;
+  border-radius: 50px;
+}
+
+img {
+  margin: 0 0 20px 0;
+}

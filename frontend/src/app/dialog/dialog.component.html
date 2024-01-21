@@ -1,0 +1,102 @@
+<!-- <h1 mat-dialog-title>Add Task</h1> -->
+<div mat-dialog-content>
+  <form [formGroup]="taskForm">
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Task Id</mat-label>
+      <input formControlName="taskId" matInput placeholder="Enter Task ID" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Task Name</mat-label>
+      <input
+        formControlName="taskName"
+        matInput
+        placeholder="Enter Task Name"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Task Description</mat-label>
+      <input
+        formControlName="description"
+        matInput
+        placeholder="Enter Description"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Task Category</mat-label>
+      <mat-select formControlName="category" placeholder="Select Category">
+        <mat-option value="Project Task">Project Task</mat-option>
+        <mat-option value="Company Task">Company Task</mat-option>
+        <mat-option value="Home Task">Home Task</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Task Due date</mat-label>
+      <input
+        formControlName="dueDate"
+        placeholder="Select Due Date"
+        matInput
+        [min]="minDate"
+        [matDatepicker]="dueDatePicker"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="dueDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker touchUi #dueDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <label for=""><h2>Task Priority</h2></label>
+    <mat-radio-group
+      formControlName="priority"
+      placeholder="Select Priority"
+      class="example-radio-group"
+    >
+      <mat-radio-button
+        class="example-radio-button"
+        *ngFor="let priority of PriorityLevel"
+        [value]="priority"
+      >
+        {{ priority }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Task Status</mat-label>
+      <mat-select
+        formControlName="status"
+        placeholder="Select Status"
+        placeholder="Status"
+      >
+        <mat-option value="TO DO">TO DO</mat-option>
+        <mat-option value="IN PROGRESS">IN PROGRESS</mat-option>
+        <mat-option value="COMPLETE">COMPLETE</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Comments</mat-label>
+      <input
+        formControlName="comments"
+        matInput
+        placeholder="Write Comments here"
+      />
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button
+    style="margin-left: 8px"
+    mat-raised-button
+    color="primary"
+    (click)="addTask()"
+    [disabled]="taskForm.invalid"
+  >
+    {{ ActionBtn }}
+  </button>
+</div>

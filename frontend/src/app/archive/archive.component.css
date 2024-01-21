@@ -1,0 +1,21 @@
+.heading {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 600;
+}
+
+.container-head {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.delete {
+  float: right;
+  border-radius: 50px;
+  width: 150px;
+  margin-top: 15px;
+}
+
+.button {
+  padding-bottom: 70px;
+}

@@ -1,0 +1,83 @@
+<div class="login-image">
+  <img
+    style="width: 600px"
+    src="../../assets/login-img.png"
+    alt="login-image"
+  />
+</div>
+<mat-card class="card">
+  <img class="logo" src="/assets/login.png" alt="login-logo" />
+  <mat-card-content class="content">Welcome Back !</mat-card-content>
+  <form (ngSubmit)="OnSubmit(loginForm)" #loginForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        [(ngModel)]="credentials.email"
+        pattern="[a-zA-Z0-9]+.[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}"
+        name="email"
+        type="text"
+        placeholder="Enter Email"
+        required
+        matInput
+        #email="ngModel"
+      />
+      <mat-error *ngIf="email.errors?.['required']"
+        >Email id is required</mat-error
+      >
+      <mat-error *ngIf="email.errors?.['pattern']"
+        >Enter the email id which you used for sign up</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        [(ngModel)]="credentials.password"
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+        name="password"
+        type="password"
+        placeholder="Enter Password"
+        [type]="hide ? 'password' : 'text'"
+        #password="ngModel"
+        required
+        matInput
+      />
+      <mat-error *ngIf="password?.errors?.['required']"
+        >Password is required</mat-error
+      >
+      <mat-error *ngIf="password.errors?.['pattern']"
+        >Enter the password which you created at the time of register</mat-error
+      >
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <br /><br /><br />
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="loginForm.invalid"
+    >
+      Log in
+    </button>
+    <button
+      type="reset"
+      style="margin-left: 20px"
+      mat-raised-button
+      color="warn"
+    >
+      Reset
+    </button>
+
+    <br />
+    <br />
+    <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
+  </form>
+</mat-card>

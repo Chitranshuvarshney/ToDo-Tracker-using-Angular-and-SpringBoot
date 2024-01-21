@@ -1,0 +1,9 @@
+<mat-form-field class="filter" appearance="outline">
+  <mat-label>Filter Tasks by Status</mat-label>
+  <mat-select [(ngModel)]="filterByStatus" (ngModelChange)="Onfilter()">
+    <mat-option value="ALL">ALL</mat-option>
+    <mat-option value="TO DO">TO DO</mat-option>
+    <mat-option value="IN PROGRESS">IN PROGRESS</mat-option>
+    <mat-option value="COMPLETE">COMPLETE</mat-option>
+  </mat-select>
+</mat-form-field>

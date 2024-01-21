@@ -1,0 +1,69 @@
+<div class="contact-image">
+  <img style="width: 500px" src="../../assets/contact.png" alt="contact-us" />
+</div>
+<mat-card class="card">
+  <mat-card-content class="content">Contact us</mat-card-content>
+  <form (ngSubmit)="OnSubmit(contactForm)" #contactForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input
+        [(ngModel)]="credentials.name"
+        type="text"
+        name="name"
+        placeholder="Enter Name"
+        pattern="^[a-zA-Z\s]*$"
+        matInput
+        required
+        #name="ngModel"
+      />
+      <mat-error *ngIf="name.errors?.['required']"> Name is required</mat-error>
+      <mat-error *ngIf="name.errors?.['pattern']"
+        >Name containing only alphabets
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        [(ngModel)]="credentials.email"
+        pattern="[a-zA-Z0-9]+.[a-zA-Z0-9]+@[a-z]+\.[a-z]{2,3}"
+        name="email"
+        type="text"
+        placeholder="Enter Email"
+        required
+        matInput
+        #email="ngModel"
+      />
+      <mat-error *ngIf="email.errors?.['required']"
+        >Email id is required</mat-error
+      >
+      <mat-error *ngIf="email.errors?.['pattern']"
+        >Enter valid email id example : abc@gmail.com</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Message</mat-label>
+      <textarea
+        [(ngModel)]="credentials.message"
+        name="message"
+        cols="30"
+        rows="5"
+        matInput
+        required
+        #message="ngModel"
+      ></textarea>
+      <mat-error *ngIf="message.errors?.['required']"
+        >Message is required</mat-error
+      >
+    </mat-form-field>
+    <br /><br />
+    <button
+      style="width: 100%; border-radius: 50px"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="contactForm.invalid"
+    >
+      Send Message
+    </button>
+  </form>
+</mat-card>
